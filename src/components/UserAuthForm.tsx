@@ -1,6 +1,6 @@
 "use client"
 
-import {cn} from "@/libs/utils";
+import {cn} from "@/lib/utils";
 import {FC, useState} from "react";
 import {Button} from "@/components/ui/Button";
 import {signIn} from "next-auth/react"

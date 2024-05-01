@@ -1,8 +1,8 @@
 import Link from "next/link";
 import {cn} from "@/lib/utils";
 import {buttonVariants} from "@/components/ui/Button";
-import SignIn from "@/components/SignIn";
 import {ChevronLeft} from "lucide-react";
+import SignUp from "@/components/SignUp";
 
 export default function Page() {
     return (
@@ -12,7 +12,7 @@ export default function Page() {
                     <ChevronLeft className="mr-2 h-4 w-4"/>
                     Home
                 </Link>
-                <SignIn/>
+                <SignUp/>
             </div>
         </div>
     );

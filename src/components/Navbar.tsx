@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Icons } from "./Icons"
 import {buttonVariants} from "@/components/ui/Button";
-import {getAuthSession} from "@/libs/auth";
+import {getAuthSession} from "@/lib/auth";
 import UserAccountNav from "@/components/UserAccountNav";
 
 const Navbar = async() => {
