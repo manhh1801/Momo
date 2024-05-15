@@ -3,6 +3,7 @@ import {db} from "@/lib/db";
 import {INFINITE_SCROLLING_PAGINATION_RESULTS} from "@/config";
 import {notFound} from "next/navigation";
 import MiniCreatePost from "@/components/MiniCreatePost";
+import PostFeed from "@/components/PostFeed";
 
 interface PageProps {
     params: {
@@ -38,7 +39,7 @@ export default async function Page ({params}: PageProps) {
         <>
             <h1 className="font-bold text-3xl md:text-4xl h-14">m/{subreddit.name}</h1>
             <MiniCreatePost session={session}/>
-            
+            <PostFeed initialPosts={subreddit.posts} subredditName={subreddit.name}/>
         </>
     )
 }
