@@ -46,7 +46,7 @@ export async function GET(req: Request) {
         else if(session) {
             whereClause = {
                 subreddit: {
-                    if: {
+                    id: {
                         in: followedCommunitiesIds
                     }
                 }
