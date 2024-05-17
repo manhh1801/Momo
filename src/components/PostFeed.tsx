@@ -1,6 +1,6 @@
 "use client"
 
-import {FC, useRef} from "react"
+import {FC, useEffect, useRef} from "react"
 import {ExtendedPost} from "@/types/db";
 import {useIntersection} from "@mantine/hooks";
 import {useInfiniteQuery} from "@tanstack/react-query";
@@ -23,17 +23,11 @@ const PostFeed: FC<PostFeedProps> = ({initialPosts, subredditName}) => {
 
     const {data: session} = useSession()
 
-     const fetchPosts = async ({pageParam = 1}) => {
-        const query = `api/post?limit=${INFINITE_SCROLLING_PAGINATION_RESULTS}&page=${pageParam}` + (!!subredditName ? `&subredditName=${subredditName}` : "");
-        const {data} = await axios.get(query);
-        return data as ExtendedPost[];
-    }
-
     const {data, fetchNextPage, isFetchingNextPage} = useInfiniteQuery({
         queryKey: ["infinite-query"],
         //@ts-ignore
         queryFn: async ({pageParam = 1}) => {
-            const query = `api/post?limit=${INFINITE_SCROLLING_PAGINATION_RESULTS}&page=${pageParam}` + (!!subredditName ? `&subredditName=${subredditName}` : "")
+            const query = `/api/posts?limit=${INFINITE_SCROLLING_PAGINATION_RESULTS}&page=${pageParam}` + (!!subredditName ? `&subredditName=${subredditName}` : "")
             const {data} = await axios.get(query)
             return data as ExtendedPost[]
         },
@@ -42,6 +36,12 @@ const PostFeed: FC<PostFeedProps> = ({initialPosts, subredditName}) => {
         },
         initialData: {pages: initialPosts, pageParams: [1]}
     })
+
+    useEffect(() => {
+        if(entry?.isIntersecting) {
+            fetchNextPage()
+        }
+    }, [entry, fetchNextPage])
 
     const posts = data?.pages.flatMap((page) => page) ?? initialPosts
 
