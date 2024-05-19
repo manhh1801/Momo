@@ -17,7 +17,7 @@ const MiniCreatePost:FC<MiniCreatePostProps> = ({session}) => {
     const pathname = usePathname()
 
     return (
-        <li className="overflow-hidden rounded-md bg-white shadow">
+        <div className="overflow-hidden rounded-md bg-white shadow">
             <div className="h-full px-4 py-6 flex justify-between gap-6">
                 <div className="relative">
                     <UserAvatar user={{
@@ -26,16 +26,25 @@ const MiniCreatePost:FC<MiniCreatePostProps> = ({session}) => {
                     }}/>
                     <span className="absolute bottom-0 right-0 rounded-full w-3 h-3 bg-green-500 outline outline-2 outline-white"/>
                 </div>
-                <Input readOnly onClick={() => router.push(pathname + "/submit")}/>
-                <Button variant="ghost" onClick={() => router.push(pathname + "/submit")}>
+                <Input readOnly onClick={() => {
+                    router.push(pathname + "/submit")
+                    router.refresh()
+                }}/>
+                <Button variant="ghost" onClick={() => {
+                    router.push(pathname + "/submit")
+                    router.refresh()
+                }}>
                     <ImageIcon className="text-zinc-600"/>
                 </Button>
-                <Button variant="ghost" onClick={() => router.push(pathname + "/submit")}>
+                <Button variant="ghost" onClick={() => {
+                    router.push(pathname + "/submit")
+                    router.refresh()
+                }}>
                     <Link2 className="text-zinc-600"/>
                 </Button>
 
             </div>
-        </li>
+        </div>
     )
 }
 

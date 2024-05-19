@@ -5,6 +5,7 @@ import {format} from "date-fns";
 import SubscribeLeaveToggle from "@/components/SubscribeLeaveToggle";
 import {buttonVariants} from "@/components/ui/Button";
 import Link from "next/link";
+import ToFeedButton from "@/components/ToFeedButton";
 
 export default async function RootLayout({children, params: {slug}}: {children: React.ReactNode, params: {slug: string}}) {
     const session = await getAuthSession()
@@ -44,6 +45,7 @@ export default async function RootLayout({children, params: {slug}}: {children: 
     return (
         <div className="sm:container max-w-7xl mx-auto h-full pt=-12">
             <div>
+                <ToFeedButton/>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-y-4 md:gap-x-4 py-6">
                     <div className="flex flex-col col-span-2 space-y-6">
                         {children}

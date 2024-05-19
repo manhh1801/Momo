@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 
 import { usePathname, useRouter } from 'next/navigation'
-import { FC, useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import {
     Command,

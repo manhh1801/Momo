@@ -44,7 +44,7 @@ const Page = async ({params}: PageProps) => {
             <div className="h-full flex flex-col sm:flex-row items-center sm:items-start justify-between">
                 <Suspense fallback={<PostVoteShell/>}>
                     <PostVoteServer postId={post?.id ?? cachedPost.id} getData={async () => {
-                        return await db.post.findUnique({
+                        return db.post.findUnique({
                             where: {
                                 id: params.postId
                             },
