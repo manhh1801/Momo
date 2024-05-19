@@ -18,9 +18,7 @@ import {
 import { useOnClickOutside } from '@/hooks/use-on-click-outside'
 import { Users } from 'lucide-react'
 
-interface SearchBarProps {}
-
-const SearchBar: FC<SearchBarProps> = ({}) => {
+export default function SearchBar() {
     const [input, setInput] = useState<string>('')
     const pathname = usePathname()
     const commandRef = useRef<HTMLDivElement>(null)
@@ -99,5 +97,3 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
         </Command>
     )
 }
-
-export default SearchBar
