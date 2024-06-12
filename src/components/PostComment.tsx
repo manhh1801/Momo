@@ -63,7 +63,7 @@ const PostComment: FC<PostCommentProps>=({comment, votesAmt, currentVote, postId
         <div ref={commentRef} className="flex flex-col">
             <div className="flex items-center">
                 <UserAvatar user={{
-                    name: comment.author.name || null,
+                    name: comment.author.username || null,
                     image: comment.author.image || null
                 }} className="h-6 w-6"/>
                 <div className="ml-2 flex items-center gap-x-2">
